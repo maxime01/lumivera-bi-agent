@@ -1,7 +1,5 @@
-"""
-Agent 3 — Data Analyst
-Interprète les résultats SQL : tendances, anomalies, MAPE.
-"""
+"""Agent 3 — Data Analyst : interprète les résultats SQL (tendances, anomalies, MAPE)."""
+from __future__ import annotations
 import pandas as pd
 
 from .llm import call_claude

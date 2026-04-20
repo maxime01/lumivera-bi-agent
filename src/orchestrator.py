@@ -21,7 +21,7 @@ Schéma de données :
 
 
 def plan(question: str) -> dict:
-    raw = call_claude(_SYSTEM, question)
+    raw = call_claude(_SYSTEM, question, cache_system=True, fast=True)
     try:
         return json.loads(raw)
     except json.JSONDecodeError:

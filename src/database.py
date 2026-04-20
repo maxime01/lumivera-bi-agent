@@ -3,6 +3,7 @@ DuckDB sur CSV local.
 Pour passer en prod BigQuery : remplacer get_connection() et run_query_df()
 par google.cloud.bigquery.Client() + client.query(sql).to_dataframe().
 """
+from __future__ import annotations
 import os
 from pathlib import Path
 

@@ -1,7 +1,5 @@
-"""
-Agent 2 — SQL Executor
-Traduit un intent en SQL DuckDB et l'exécute sur le CSV.
-"""
+"""Agent 2 — SQL Executor : traduit un intent en SQL DuckDB et l'exécute sur le CSV."""
+from __future__ import annotations
 import pandas as pd
 
 from .llm import call_claude
@@ -23,7 +21,7 @@ Schéma :
 
 
 def generate_and_run(intent: str) -> tuple[str, pd.DataFrame | None]:
-    sql = call_claude(_SYSTEM, f"Intent : {intent}", max_tokens=600).rstrip(";") + ";"
+    sql = call_claude(_SYSTEM, f"Intent : {intent}", max_tokens=600, cache_system=True).rstrip(";") + ";"
     try:
         return sql, run_query_df(sql)
     except Exception as e:

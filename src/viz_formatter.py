@@ -1,7 +1,5 @@
-"""
-Agent 5 — Viz Formatter
-Produit une réponse structurée lisible pour un utilisateur non technique.
-"""
+"""Agent 5 — Viz Formatter : réponse structurée lisible pour un non-technique."""
+from __future__ import annotations
 import pandas as pd
 
 from .llm import call_claude
