@@ -6,8 +6,8 @@ from __future__ import annotations
 import os
 import anthropic
 
-MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
-MODEL_FAST = os.getenv("CLAUDE_MODEL_FAST", "claude-haiku-4-5-20251001")  # orchestrateur, tâches simples
+MODEL = os.getenv("CLAUDE_MODEL", "claude-haiku-4-5-20251001")
+MODEL_FAST = os.getenv("CLAUDE_MODEL_FAST", "claude-haiku-4-5-20251001")
 MAX_TOKENS = int(os.getenv("CLAUDE_MAX_TOKENS", "800"))
 
 _client: anthropic.Anthropic | None = None
@@ -39,4 +39,6 @@ def call_claude(
         system=system_block,
         messages=[{"role": "user", "content": user}],
     )
+    usage = response.usage
+    print(f"      💬 {model} | in:{usage.input_tokens} out:{usage.output_tokens} tokens")
     return response.content[0].text.strip()
